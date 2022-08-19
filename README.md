@@ -4,7 +4,7 @@ Convert MP3 files to Traktor STEM files.
 
 This is the only standalone, 100% free, opensource tool for converting regular mp3 files into Traktor compatible stem files.
 Here you can convert entire music libraries of plain mp3 files into 4 track (drums, bass, vocals & insturmental) stems files for use in DJ software such as Traktor.
-Autostem uses the Spleeter machine learning algorythim and runs locally on your machine, meaning no annoying subscriptions or paywalls. It's your computer doing the work.
+Autostem uses the Spleeter or Demucs machine learning algorythim and runs locally on your machine, meaning no annoying subscriptions or paywalls. It's your computer doing the work.
 
 ### Features
 * Convert mp3 files into Traktor compatible STEM files.
