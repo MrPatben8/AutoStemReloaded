@@ -6,16 +6,25 @@ This is the only standalone, 100% free, opensource tool for converting regular m
 Here you can convert entire music libraries of plain mp3 files into 4 track (drums, bass, vocals & insturmental) stems files for use in DJ software such as Traktor.
 Autostem uses the Spleeter machine learning algorythim and runs locally on your machine, meaning no annoying subscriptions or paywalls. It's your computer doing the work.
 
+### Features
+* Convert mp3 files into Traktor compatible STEM files.
+* Convert single files or entire folders of songs.
+* Choose between Spleeter and Demucs separation AI algorythims.
+* Convert large files.
+* Fully configurable STEM options, track colors and names, compressor and limiter.
+* Duplicate song finder/manager.
+
 ### Getting Started
 * Clone or download and extract the repository.
 * Navigate to AutoStemReloaded/AutoStemReloadedUnity/Builds these are the program files.
 * Move all the contents of this folder into your desired location, the rest of the files can be discarded if you have no interest in the source code.
-* Install Spleeter and FFMPEG
+* Install FFMPEG, Spleeter and/or Demucs
   * https://github.com/deezer/spleeter
+  * https://github.com/facebookresearch/demucs
   * https://ffmpeg.org
   * Follow the instructions to install each of those as command line tools.
-  * You can test if your installation was successful by opening a command promps window and trying to run ```spleeter``` and ```ffmpeg```
-  * If you get the message ```spleeter/ffmpeg is not recognized as an internal or external command, operable program or batch file.```
+  * You can test if your installation was successful by opening a command promps window and trying to run ```spleeter```, ```demucs``` and ```ffmpeg```
+  * If you get the message ```spleeter/demucs/ffmpeg is not recognized as an internal or external command, operable program or batch file.``` then please verify your installation. Google is your friend.
 * Run AutoStem.exe
 * Enjoy! (Please note: conversions can take a few minutes per song depending on your hardware and other factors)
 

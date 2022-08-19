@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - AutoStem
     - DupeFinder
     - Fader
+    - StemToMp3
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -66,49 +67,51 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1546}
+      Script: {instanceID: 5482}
     - Class: 114
-      Script: {instanceID: 1638}
+      Script: {instanceID: 5596}
     - Class: 114
-      Script: {instanceID: 1688}
+      Script: {instanceID: 5666}
     - Class: 114
-      Script: {instanceID: 1764}
+      Script: {instanceID: 5762}
     - Class: 114
-      Script: {instanceID: 2016}
+      Script: {instanceID: 6106}
     - Class: 114
-      Script: {instanceID: 2024}
+      Script: {instanceID: 6116}
     - Class: 114
-      Script: {instanceID: 2292}
+      Script: {instanceID: 6452}
     - Class: 114
-      Script: {instanceID: 2396}
+      Script: {instanceID: 6580}
     - Class: 114
-      Script: {instanceID: 2510}
+      Script: {instanceID: 6738}
     - Class: 114
-      Script: {instanceID: 2536}
+      Script: {instanceID: 6782}
     - Class: 114
-      Script: {instanceID: 2584}
+      Script: {instanceID: 6838}
     - Class: 114
-      Script: {instanceID: 2702}
+      Script: {instanceID: 6894}
     - Class: 114
-      Script: {instanceID: 2710}
+      Script: {instanceID: 7008}
     - Class: 114
-      Script: {instanceID: 2782}
+      Script: {instanceID: 7014}
     - Class: 114
-      Script: {instanceID: 3334}
+      Script: {instanceID: 7102}
     - Class: 114
-      Script: {instanceID: 3470}
+      Script: {instanceID: 7804}
     - Class: 114
-      Script: {instanceID: 3578}
+      Script: {instanceID: 7966}
     - Class: 114
-      Script: {instanceID: 3594}
+      Script: {instanceID: 7998}
     - Class: 114
-      Script: {instanceID: 3664}
+      Script: {instanceID: 8130}
     - Class: 114
-      Script: {instanceID: 3882}
+      Script: {instanceID: 8148}
     - Class: 114
-      Script: {instanceID: 3888}
+      Script: {instanceID: 8262}
     - Class: 114
-      Script: {instanceID: 20390}
+      Script: {instanceID: 8546}
+    - Class: 114
+      Script: {instanceID: 8560}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -328,7 +331,7 @@ ScriptsOnlyBuild:
     className: Stepper
   - hash:
       serializedVersion: 2
-      Hash: 344a8c2e106a0a4e098e91a52e0af063
+      Hash: 300fd99066f8c288e85f5e81ce65fe34
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_FontAsset
@@ -430,7 +433,7 @@ ScriptsOnlyBuild:
     className: Accordion
   - hash:
       serializedVersion: 2
-      Hash: d791aa6007fa3640be1164ea75bb087d
+      Hash: 800c50acba124432abb4cf0d47202e06
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
@@ -598,7 +601,7 @@ ScriptsOnlyBuild:
     className: AudioTrack
   - hash:
       serializedVersion: 2
-      Hash: c1933cc0a2f4ff6eb13333347497beb3
+      Hash: a74405a4829a834d107a0c6e072719ed
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: TimelineAsset
@@ -676,7 +679,7 @@ ScriptsOnlyBuild:
     className: ReturnKeyTriggersButton
   - hash:
       serializedVersion: 2
-      Hash: 65b54cb32dc85c2b198c90ed376b612e
+      Hash: b0cd3eedfb5cc342b71afa9ca0a48f44
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AutoStem
@@ -724,7 +727,7 @@ ScriptsOnlyBuild:
     className: UIParticleSystem
   - hash:
       serializedVersion: 2
-      Hash: c8c9d8ff54f5e1e108296aa19c108880
+      Hash: a306e12d896ddcca949923c805691027
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: InputField
@@ -760,6 +763,12 @@ ScriptsOnlyBuild:
     className: Benchmark03
   - hash:
       serializedVersion: 2
+      Hash: e1384153f75b5236e61902996b9c2807
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StemToMp3
+  - hash:
+      serializedVersion: 2
       Hash: 0d16df4dde7c99bb5a08bf442259bb7d
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions
@@ -772,16 +781,16 @@ ScriptsOnlyBuild:
     className: ColorPickerPresets
   - hash:
       serializedVersion: 2
-      Hash: 748dd2a2a28da4e618912da5ac45684b
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.EventSystems
-    className: StandaloneInputModule
-  - hash:
-      serializedVersion: 2
       Hash: c913c1a650d9fa5fb48d6e06dcf86e99
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions
     className: UIFlippable
+  - hash:
+      serializedVersion: 2
+      Hash: 748dd2a2a28da4e618912da5ac45684b
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.EventSystems
+    className: StandaloneInputModule
   - hash:
       serializedVersion: 2
       Hash: f7858108331b563fb41b80b729297acd
@@ -1060,7 +1069,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: a2612813f45d0ced02c3e4bc9dbea8b4
+      Hash: da4cc51a02ce84afe2cecd27cfe6997a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshPro
@@ -1220,6 +1229,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions
     className: VRCursor
+  - hash:
+      serializedVersion: 2
+      Hash: a590ea4c73045548e2fc549025399888
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DupeFinder
   - hash:
       serializedVersion: 2
       Hash: f13c460e52d02ffe01df7fab616110e3
@@ -1426,7 +1441,7 @@ ScriptsOnlyBuild:
     className: Fader
   - hash:
       serializedVersion: 2
-      Hash: 5cc439bf63c0539d39588e69465ac2ab
+      Hash: fd68d84f33fad85aac38f2739c0ee270
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAsset
@@ -1694,13 +1709,7 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions
     className: ScrollSnap
-  - hash:
-      serializedVersion: 2
-      Hash: a590ea4c73045548e2fc549025399888
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DupeFinder
   platform: 19
   scenePathNames:
   - Assets/AutoStem.unity
-  playerPath: C:/Users/patbe/Desktop/AutoStemReloaded/Builds/AutoStem.exe
+  playerPath: C:/Users/patbe/Desktop/AutoStemReloaded/AutoStemReloadedUnity/Builds/AutoStem.exe
