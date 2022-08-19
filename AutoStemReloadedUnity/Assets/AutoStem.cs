@@ -16,6 +16,7 @@ public class AutoStem : MonoBehaviour
 	public int fileSplitSize = 60;
 	public bool convertFails;
 	public bool highQualityMode;
+	public bool useDemucs;
 	public bool saveAsMp4;
 	string trackPath;
 	public string outputPath;
@@ -50,6 +51,9 @@ public class AutoStem : MonoBehaviour
 	{
 		public Text versionText;
 		public GameObject helpSceen;
+		public Dropdown modelSelect;
+		public Text demucsText;
+		public Text spleeterText;
 		public Toggle hqmode;
 		public Toggle mp4mode;
 		public Toggle convertFails;
@@ -382,6 +386,10 @@ public class AutoStem : MonoBehaviour
 		highQualityMode = ui.hqmode.isOn;
 		saveAsMp4 = ui.mp4mode.isOn;
 		convertFails = ui.convertFails.isOn;
+
+		useDemucs = ui.modelSelect.value == 0;
+		ui.spleeterText.gameObject.SetActive(!useDemucs);
+		ui.demucsText.gameObject.SetActive(useDemucs);
 
 		if(failedSongs.Count > 0)
 		{
@@ -1110,7 +1118,13 @@ public class AutoStem : MonoBehaviour
 			UnityEngine.Debug.Log("Deleted stems folder!");
 			Directory.Delete(dataPath + "/temp/stems", true);
 		}
-		
+
+		if(Directory.Exists(dataPath + "/temp/separated"))
+		{
+			UnityEngine.Debug.Log("Deleted demucs stems folder!");
+			Directory.Delete(dataPath + "/temp/separated", true);
+		}
+
 		if(Directory.Exists(Directory.GetParent(Directory.GetParent(tempPath).ToString()) + "/serving"))
 		{
 			try
@@ -1184,11 +1198,14 @@ public class AutoStem : MonoBehaviour
 	{
 		string cmd = "cd " + '"' + dataPath + "/temp/" + '"';
 		string cmd2 = "spleeter separate ";
+		if(useDemucs)
+			cmd2 = "demucs ";
 		foreach(string str in batchCue[batch].songs)
 		{
 			cmd2 += '"' + str + '"' + " ";
 		}
-		cmd2 += " -o stems " + (highQualityMode ? "-p spleeter:4stems-16kHz" : "-p spleeter:4stems");// + " -f track/{instrument}.wav";
+		if(!useDemucs)
+			cmd2 += " -o stems " + (highQualityMode ? "-p spleeter:4stems-16kHz" : "-p spleeter:4stems");// + " -f track/{instrument}.wav";
 		UnityEngine.Debug.Log(cmd2);
 		ProcessStartInfo process = new ProcessStartInfo("cmd.exe");
 		process.Arguments = "/c " + cmd + " & " + cmd2;
@@ -1196,6 +1213,16 @@ public class AutoStem : MonoBehaviour
 		Process processT = Process.Start(process);
 		processT.WaitForExit();
 		processT.Close();
+		if(useDemucs)
+		{
+			//Restructure folder to match Spleeter output:	temp/separated/mdx_extra_q/[SONG NAME]/[bass.wav, drums.wav, other.wav, vocals.wav]
+			//												temp/stems/[SONG NAME]/[bass.wav, drums.wav, other.wav, vocals.wav]
+			Directory.CreateDirectory(dataPath + "/temp/stems/");			
+			foreach(string song in batchCue[batch].names)
+			{
+				Directory.Move(dataPath + "/temp/separated/mdx_extra_q/" + song + "/", dataPath + "/temp/stems/" + song + "/");
+			}
+		}
 	}
 
 	public void ConvertStems(int batchNum, int songNum)
