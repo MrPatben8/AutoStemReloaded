@@ -25,6 +25,7 @@ Autostem uses the Spleeter or Demucs machine learning algorythim and runs locall
   * Follow the instructions to install each of those as command line tools.
   * You can test if your installation was successful by opening a command promps window and trying to run ```spleeter```, ```demucs``` and ```ffmpeg```
   * If you get the message ```spleeter/demucs/ffmpeg is not recognized as an internal or external command, operable program or batch file.``` then please verify your installation. Google is your friend.
+* If you have an Nvidia GPU then I strongly suggest you install the GPU accelerated version of Demucs. It's much faster than Spleeter (depending on your GPU).
 * Run AutoStem.exe
 * Enjoy! (Please note: conversions can take a few minutes per song depending on your hardware and other factors)
 
