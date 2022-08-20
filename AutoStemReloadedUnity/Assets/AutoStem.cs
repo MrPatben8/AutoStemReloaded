@@ -12,6 +12,7 @@ public class AutoStem : MonoBehaviour
 	public RectTransform pivot;
 	int pageNumber = 0;
 	public bool debugMode;
+	public bool partialDebug;
 	[Space]
 	public int fileSplitSize = 60;
 	public bool convertFails;
@@ -49,7 +50,10 @@ public class AutoStem : MonoBehaviour
 	[System.Serializable]
 	public class UIElements
 	{
+		public GameObject panels;
 		public Text versionText;
+		public Image debugIcon;
+		public Text debugbText;
 		public GameObject helpSceen;
 		public Dropdown modelSelect;
 		public Text demucsText;
@@ -211,6 +215,9 @@ public class AutoStem : MonoBehaviour
 		{
 			toolPath = dataPath + "/tools";
 		}
+		
+		ui.panels.SetActive(!UnityEngine.Debug.isDebugBuild);
+		ui.debugIcon.gameObject.SetActive(false);
 	}
 
 	public void SelectFileMode()
@@ -372,6 +379,31 @@ public class AutoStem : MonoBehaviour
 		ui.log.transform.parent.gameObject.SetActive(!ui.log.transform.parent.gameObject.activeSelf);
 	}
 
+	public void CycleDebugModes()
+	{
+		if(!debugMode && !partialDebug)
+		{
+			debugMode = false;
+			partialDebug = true;
+			ui.debugIcon.gameObject.SetActive(true);
+			ui.debugbText.text = "Separation Debug";
+		} else
+			if(!debugMode && partialDebug)
+		{
+			debugMode = true;
+			partialDebug = false;
+			ui.debugIcon.gameObject.SetActive(true);
+			ui.debugbText.text = "Full Debug";
+		} else
+			if(debugMode && !partialDebug)
+		{
+			debugMode = false;
+			partialDebug = false;
+			ui.debugIcon.gameObject.SetActive(false);
+			ui.debugbText.text = "";
+		}
+	}
+
 	float gameTime;
 	float timeScanDelta;
 	bool setScanDeltaTime;
@@ -390,6 +422,11 @@ public class AutoStem : MonoBehaviour
 		useDemucs = ui.modelSelect.value == 0;
 		ui.spleeterText.gameObject.SetActive(!useDemucs);
 		ui.demucsText.gameObject.SetActive(useDemucs);
+
+		if(Input.GetKeyDown(KeyCode.D))
+		{
+			CycleDebugModes();
+		}
 
 		if(failedSongs.Count > 0)
 		{
@@ -496,6 +533,7 @@ public class AutoStem : MonoBehaviour
 			newSprite = Sprite.Create(tex2D, new Rect(0,0, tex2D.width, tex2D.height), new Vector2(0,0), 100.0f);
 			ui.artwork.sprite = newSprite;
 			ui.artwork2.sprite = newSprite;
+			artworkData = null;
 		}
 		
 	}
@@ -1209,7 +1247,12 @@ public class AutoStem : MonoBehaviour
 		UnityEngine.Debug.Log(cmd2);
 		ProcessStartInfo process = new ProcessStartInfo("cmd.exe");
 		process.Arguments = "/c " + cmd + " & " + cmd2;
-		if(!debugMode){process.WindowStyle = ProcessWindowStyle.Hidden;}
+		if(debugMode || partialDebug){
+			//process.WindowStyle = ProcessWindowStyle.Hidden;
+		} else
+		{
+			process.WindowStyle = ProcessWindowStyle.Hidden;
+		}
 		Process processT = Process.Start(process);
 		processT.WaitForExit();
 		processT.Close();

@@ -10,20 +10,55 @@ using System.Threading;
 
 public class StemToMp3 : MonoBehaviour
 {
-    public bool debugMode = false;
+    public AutoStem core;
     public List<string> files;
     public string searchPath;
     public bool deleteAfterConversion;
-    // Start is called before the first frame update
-    void Start()
-    {
-        SelectDirectory();
+    public Slider progressBar;
+    public Text sliderText;
+    public Button startButton;
+    public Button folderButton;
+    public Button fileButton;
+    public Toggle deleteToggle;
+
+    public Text indicatorText;
+    public Text pathText;
+
+    bool done;
+
+	private void Start()
+	{
+        pathText.text = "";
+        indicatorText.text = "No files selected";
+        done = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+	private void Update()
+	{
+        deleteAfterConversion = deleteToggle.isOn;
+        progressBar.value = progress;
+        sliderText.text = "" + progress + " of " + files.Count;
+
+        startButton.GetComponentInChildren<Text>().text = done ? "Start Conversion" : "STOP";
+        deleteToggle.interactable = done;
+        folderButton.interactable = done;
+        fileButton.interactable = done;
+
+        if(progress < files.Count)
+        {
+            pathText.text = files[progress];
+        }
+    }
+
+    public void SelectFiles()
+	{
+        files = new List<string>();
+        List<ExtensionFilter> extensionFilter = new List<ExtensionFilter>();
+        extensionFilter.Add(new ExtensionFilter("STEM", new string[] { "mp4", "m4a" }));
+
+        files = new List<string>(StandaloneFileBrowser.OpenFilePanel("Search In", "", extensionFilter.ToArray(), true));
+        indicatorText.text = "" + files.Count() + " Files Selected";
+        //RenderList();
     }
 
     public void SelectDirectory()
@@ -31,7 +66,7 @@ public class StemToMp3 : MonoBehaviour
         files = new List<string>();
         searchPath = StandaloneFileBrowser.OpenFolderPanel("Search In", "", false)[0];
         GetFiles();
-        ConvertList();
+        indicatorText.text = "" + files.Count() + " Files Found";
         //RenderList();
     }
 
@@ -43,23 +78,31 @@ public class StemToMp3 : MonoBehaviour
     }
 
     Thread thread;
-    void ConvertList()
+    int progress = 0;
+    public void ConvertList()
 	{
         if(thread != null && thread.IsAlive)
         {
             thread.Abort();
+            startButton.GetComponentInChildren<Text>().text = "Start Conversion";
+            done = true;
 
         } else
         {
+            done = false;
+            progress = 0;
+            progressBar.maxValue = files.Count;
             thread = new Thread(delegate ()
             {
                 int x = 0;
                 foreach(string st in files)
 		        {
-                    x++;
                     UnityEngine.Debug.Log("Converting " + x + "/" + files.Count);
+                    progress = x;
                     ConvertFile(st);
-		        }
+                    x++;
+                }
+                done = true;
             });
             thread.Start();
         }
@@ -80,7 +123,7 @@ public class StemToMp3 : MonoBehaviour
         string command = " -i " + '"' + file + '"' + " " + '"' + newPath + '"';
         ProcessStartInfo processStart = new ProcessStartInfo("ffmpeg.exe");
         processStart.Arguments = command;
-        if(!debugMode)
+        if(!core.debugMode)
         { processStart.WindowStyle = ProcessWindowStyle.Hidden; }
         Process process = Process.Start(processStart);
         process.WaitForExit();
@@ -91,4 +134,6 @@ public class StemToMp3 : MonoBehaviour
             File.Delete(file);
 		}
     }
+
+    
 }
