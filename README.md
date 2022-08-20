@@ -13,6 +13,7 @@ Autostem uses the Spleeter or Demucs machine learning algorythim and runs locall
 * Convert large files.
 * Fully configurable STEM options, track colors and names, compressor and limiter.
 * Duplicate song finder/manager.
+* Convert STEM files back into simple MP3s. (Useful for upgrading music from Spleeter to Demucs quality)
 
 ### Getting Started
 * Clone or download and extract the repository.
