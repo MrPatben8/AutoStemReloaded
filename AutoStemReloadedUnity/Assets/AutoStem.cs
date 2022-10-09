@@ -192,7 +192,7 @@ public class AutoStem : MonoBehaviour
 		public string release;
 		public string label;
 		public string genre;
-
+		public string comments;
 	}
 
 	public void ShowHideHelp()
@@ -1216,6 +1216,9 @@ public class AutoStem : MonoBehaviour
 
 				case "genre":
 					trackTags.genre = sides[1];
+					break;
+				case "comment":
+					trackTags.comments = sides[1];
 					break;
 			}
 		}

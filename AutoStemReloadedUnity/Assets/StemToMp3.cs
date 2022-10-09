@@ -102,6 +102,7 @@ public class StemToMp3 : MonoBehaviour
                     ConvertFile(st);
                     x++;
                 }
+                progress = files.Count;
                 done = true;
             });
             thread.Start();
