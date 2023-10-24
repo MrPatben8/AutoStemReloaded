@@ -200,6 +200,12 @@ public class AutoStem : MonoBehaviour
 		ui.helpSceen.SetActive(!ui.helpSceen.activeSelf);
 	}
 
+	private void Awake()
+	{
+		QualitySettings.vSyncCount = 0;
+		Application.targetFrameRate = 60;
+	}
+
 	void Start()
 	{
 		ui.versionText.text = "v " + Application.version;
@@ -388,7 +394,7 @@ public class AutoStem : MonoBehaviour
 			ui.debugIcon.gameObject.SetActive(true);
 			ui.debugbText.text = "Separation Debug";
 		} else
-			if(!debugMode && partialDebug)
+		if(!debugMode && partialDebug)
 		{
 			debugMode = true;
 			partialDebug = false;
@@ -1266,7 +1272,7 @@ public class AutoStem : MonoBehaviour
 			Directory.CreateDirectory(dataPath + "/temp/stems/");			
 			foreach(string song in batchCue[batch].names)
 			{
-				Directory.Move(dataPath + "/temp/separated/mdx_extra_q/" + song + "/", dataPath + "/temp/stems/" + song + "/");
+				Directory.Move(dataPath + "/temp/separated/htdemucs/" + song + "/", dataPath + "/temp/stems/" + song + "/");
 			}
 		}
 	}

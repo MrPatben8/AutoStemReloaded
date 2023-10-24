@@ -21,6 +21,8 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
+    Unity.Timeline.Editor.dll:
+    - TimelineProjectSettings
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
@@ -1712,4 +1714,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/AutoStem.unity
-  playerPath: C:/Users/patbe/Desktop/AutoStemReloaded/AutoStemReloadedUnity/Builds/AutoStem.exe
+  playerPath: C:/Users/patbe/Sync/AutoStem/AutoStem.exe
