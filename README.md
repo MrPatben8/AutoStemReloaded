@@ -16,9 +16,8 @@ Autostem uses the Spleeter or Demucs machine learning algorithm and runs locally
 * Convert STEM files back into simple MP3s. (Useful for upgrading music from Spleeter to Demucs quality)
 
 ### Getting Started
-* Clone or download and extract the repository.
-* Navigate to AutoStemReloaded/AutoStemReloadedUnity/Builds these are the program files.
-* Move all the contents of this folder into your desired location, the rest of the files can be discarded if you have no interest in the source code.
+* Download the latest public release: https://github.com/MrPatben8/AutoStemReloaded/releases
+* Extract the contents of the ZIP file to the desired location.
 * Install FFMPEG, Spleeter and/or Demucs
   * https://github.com/deezer/spleeter
   * https://github.com/facebookresearch/demucs
