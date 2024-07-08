@@ -1714,4 +1714,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/AutoStem.unity
-  playerPath: C:/Users/patbe/Sync/AutoStem/AutoStem.exe
+  playerPath: E:/UnityProjects/AutoStemReloaded/AutoStemReloadedUnity/Builds/AutoStem.exe

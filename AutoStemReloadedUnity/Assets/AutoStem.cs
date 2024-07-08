@@ -532,7 +532,7 @@ public class AutoStem : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if(artworkData.Length > 255)
+		if(artworkData != null && artworkData.Length > 255)
 		{
 
 			tex2D.LoadImage(artworkData);
